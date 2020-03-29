@@ -10,6 +10,8 @@ Invoque a função criada acima, passando dois números que serão somados, e mo
 o resultado no console, com a frase:
 "A soma de [VALOR 1] e [VALOR2] é igual a [RESULTADO]."
 */
+let value1 = 5
+let value2 = 3
 console.log(`A soma de 5 e 3 é igual a ${sum(5,3)}.`)
 
 /*
@@ -56,9 +58,13 @@ function calculator(operator) {
         '/': (x,y) => x / y,
         '%': (x,y) => x % y
     }
+    
     return function(x,y){
-        return `Resultado da operação: ${x} ${operator} ${y} = ${operations[operator](x,y)}.`
-    }
+        if(operator in operations) 
+            return `Resultado da operação: ${x} ${operator} ${y} = ${operations[operator](x,y)}.`
+            
+        return 'Operação inválida.'            
+    }    
 }
 
 
@@ -83,6 +89,7 @@ let substraction = calculator('-')
 let multiplication = calculator('*')
 let division = calculator('/')
 let mod = calculator('%')
+let anyThing = calculator('$')
 
 /*
 Faça uma operação com cada uma das funções criadas acima, mostrando o resultado
@@ -92,3 +99,4 @@ console.log(multiplication(10,5))
 console.log(substraction(10,5))
 console.log(division(10,5))
 console.log(mod(10,5))
+console.log(anyThing(10,5))
